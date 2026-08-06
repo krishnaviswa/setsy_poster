@@ -5,6 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "ts-node src/generate-posters.ts",
+    "ui": "ts-node src/server.ts",
     "build": "tsc",
     "start": "node dist/generate-posters.js"
   },

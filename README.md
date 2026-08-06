@@ -28,6 +28,16 @@ npm run dev -- --file "customprompt.txt"
 
 Print-ready PNGs are written to `output/poster-01.png`, `poster-02.png`, etc.
 
+## Web UI
+
+Start a simple local page to paste a prompt and submit:
+
+```bash
+npm run ui
+```
+
+Open [http://localhost:8787](http://localhost:8787), paste your structured prompt, click **Submit**.
+
 ## Docs
 
 - [Architecture](docs/ARCHITECTURE.md) — flow, model, caps, cost behavior

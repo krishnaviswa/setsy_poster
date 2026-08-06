@@ -1,5 +1,13 @@
 # Usage
 
+## Web UI (paste & submit)
+
+```bash
+npm run ui
+```
+
+Open `http://localhost:8787`, paste a structured prompt, click **Submit**. Images save to `output/`.
+
 ## Choose a prompt file
 
 Default: `config/prompt.txt`.

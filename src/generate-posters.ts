@@ -261,15 +261,15 @@ function resolveConfigPath(argv: string[]): string {
   return defaultPath;
 }
 
-async function main(): Promise<void> {
-  const configPath = resolveConfigPath(process.argv.slice(2));
-  if (!fs.existsSync(configPath)) {
-    throw new Error(`Config not found: ${configPath}`);
-  }
+export interface GenerationResult {
+  files: string[];
+  errors: string[];
+  count: number;
+}
 
-  console.log(`Using config: ${configPath}`);
-  const raw = fs.readFileSync(configPath, "utf8");
-  const config = parseConfig(raw);
+/** Parse structured prompt text and generate posters (shared by CLI and UI). */
+export async function runGeneration(rawText: string): Promise<GenerationResult> {
+  const config = parseConfig(rawText);
 
   if (config.count > MAX_IMAGES) {
     console.warn(
@@ -284,6 +284,9 @@ async function main(): Promise<void> {
   );
   // If fewer subjects than count, cycle through the list (subjects[i % length]).
   // Never invent subjects beyond what the config paragraph lists.
+
+  const files: string[] = [];
+  const errors: string[] = [];
 
   for (let i = 0; i < config.count; i++) {
     const subject = config.subjects[i % config.subjects.length];
@@ -306,15 +309,29 @@ async function main(): Promise<void> {
         config.heightInches,
         config.dpi
       );
+      files.push(filename);
       console.log(`Generated ${filename} using ${MODEL}`);
     } catch (err) {
       const message = err instanceof Error ? err.message : String(err);
+      errors.push(`${filename}: ${message}`);
       console.error(`Error generating ${filename}: ${message}`);
       console.error("Skipping this slot (no retry).");
     }
   }
 
   console.log("\nDone.");
+  return { files, errors, count: config.count };
+}
+
+async function main(): Promise<void> {
+  const configPath = resolveConfigPath(process.argv.slice(2));
+  if (!fs.existsSync(configPath)) {
+    throw new Error(`Config not found: ${configPath}`);
+  }
+
+  console.log(`Using config: ${configPath}`);
+  const raw = fs.readFileSync(configPath, "utf8");
+  await runGeneration(raw);
 }
 
 if (require.main === module) {
