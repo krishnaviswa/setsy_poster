@@ -1,8 +1,20 @@
 # Usage
 
+## Choose a prompt file
+
+Default: `config/prompt.txt`.
+
+Pass another file with `--file` (path is relative to the project folder unless absolute):
+
+```bash
+npm run dev -- --file "customprompt.txt"
+npm run dev -- --file "config/space-nursery.txt"
+npx ts-node src/generate-posters.ts --file "customprompt.txt"
+```
+
 ## Change the theme
 
-Edit `config/prompt.txt`. The first line sets both the count and the theme (text after `images for`).
+Edit `config/prompt.txt` (or your `--file` target). The first line sets both the count and the theme (text after `images for`).
 
 ## Change the number of images
 

@@ -20,6 +20,12 @@ Add your token to `.env` (`REPLICATE_API_TOKEN=...`), edit `config/prompt.txt`, 
 npm run dev
 ```
 
+Or pass a custom prompt file:
+
+```bash
+npm run dev -- --file "customprompt.txt"
+```
+
 Print-ready PNGs are written to `output/poster-01.png`, `poster-02.png`, etc.
 
 ## Docs

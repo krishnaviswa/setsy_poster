@@ -8,7 +8,7 @@ dotenv.config();
 
 /** Single hosted model — do not change unless you intentionally switch providers. */
 const MODEL = "black-forest-labs/flux-kontext-pro";
-const MAX_IMAGES = 10;
+const MAX_IMAGES = 4;
 
 export interface Config {
   theme: string;
@@ -238,12 +238,36 @@ export async function saveAsPrintReady(
     .toFile(outPath);
 }
 
+/** Parse `--file <path>` (or `--file=<path>`). Defaults to config/prompt.txt. */
+function resolveConfigPath(argv: string[]): string {
+  const defaultPath = path.join(process.cwd(), "config", "prompt.txt");
+  for (let i = 0; i < argv.length; i++) {
+    const arg = argv[i];
+    if (arg === "--file" || arg === "-f") {
+      const value = argv[i + 1];
+      if (!value || value.startsWith("-")) {
+        throw new Error('Missing path after --file. Example: --file "customprompt.txt"');
+      }
+      return path.isAbsolute(value) ? value : path.join(process.cwd(), value);
+    }
+    if (arg.startsWith("--file=")) {
+      const value = arg.slice("--file=".length);
+      if (!value) {
+        throw new Error('Missing path after --file=. Example: --file="customprompt.txt"');
+      }
+      return path.isAbsolute(value) ? value : path.join(process.cwd(), value);
+    }
+  }
+  return defaultPath;
+}
+
 async function main(): Promise<void> {
-  const configPath = path.join(process.cwd(), "config", "prompt.txt");
+  const configPath = resolveConfigPath(process.argv.slice(2));
   if (!fs.existsSync(configPath)) {
     throw new Error(`Config not found: ${configPath}`);
   }
 
+  console.log(`Using config: ${configPath}`);
   const raw = fs.readFileSync(configPath, "utf8");
   const config = parseConfig(raw);
 
