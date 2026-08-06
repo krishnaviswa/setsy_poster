@@ -1,7 +1,7 @@
 import http from "http";
 import fs from "fs";
 import path from "path";
-import { runGeneration } from "./generate-posters";
+import { runWorkflow } from "./workflow";
 
 const PORT = 8787;
 const PUBLIC_DIR = path.join(process.cwd(), "public");
@@ -89,7 +89,8 @@ const server = http.createServer(async (req, res) => {
         return;
       }
 
-      const result = await runGeneration(prompt);
+      // NLP → structure → save prompts/ → API → track docs/POSTERS.md
+      const result = await runWorkflow(prompt);
       sendJson(res, 200, result);
       return;
     }
@@ -105,5 +106,5 @@ const server = http.createServer(async (req, res) => {
 
 server.listen(PORT, () => {
   console.log(`Poster UI running at http://localhost:${PORT}`);
-  console.log("Paste a structured prompt and click Submit to generate.");
+  console.log("Paste natural-language prompt → Submit → workflow structures, saves, generates, tracks.");
 });

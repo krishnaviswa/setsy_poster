@@ -1,99 +1,78 @@
 # Usage
 
-## Web UI (paste & submit)
+## Web UI (NLP paste & submit)
 
 ```bash
 npm run ui
 ```
 
-Open `http://localhost:8787`, paste a structured prompt, click **Submit**. Images save to `output/`.
+Open `http://localhost:8787`. Paste a **natural-language** idea (not a rigid template). The backend:
+
+1. Structures the prompt
+2. Saves `prompts/<unique>.txt`
+3. Calls Replicate
+4. Writes PNGs to `output/`
+5. Appends a row to `docs/POSTERS.md`
+
+See [WORKFLOW.md](WORKFLOW.md).
 
 ## Choose a prompt file
 
-Default: `config/prompt.txt`.
+Default CLI file: `config/prompt.txt`.
 
-Pass another file with `--file` (path is relative to the project folder unless absolute):
+Pass another file with `--file`:
 
 ```bash
 npm run dev -- --file "customprompt.txt"
-npm run dev -- --file "config/space-nursery.txt"
+npm run dev -- --file "config/Ganesha.txt"
 npx ts-node src/generate-posters.ts --file "customprompt.txt"
 ```
 
+The same NLP → structure → save → generate → track workflow runs.
+
 ## Change the theme
 
-Edit `config/prompt.txt` (or your `--file` target). The first line sets both the count and the theme (text after `images for`).
+Describe what you want in plain language (or edit a text file and pass `--file`). Mention count (“3 posters”), size (“18x24 inches at 300 DPI”), and subjects when you know them.
 
 ## Change the number of images
 
-Change the number in the first line:
-
-```text
-Generate 3 vertical poster images for …
-```
-
-to, for example:
-
-```text
-Generate 5 vertical poster images for …
-```
-
-Hard cap: **10** images per run. If you ask for more, the script caps at 10 and logs a warning.
-
-If you list fewer subjects than `count`, subjects cycle (`subjects[i % length]`). The script never invents new subjects.
+Say it in the prompt (e.g. “Generate 3 … images” or “3 posters”). Hard cap still applies in code.
 
 ## Change size / DPI
 
-Edit the `Format:` line. Examples:
+Mention size in the prompt, e.g. `18x24 inches at 300 DPI`.
+
+Final pixel size = `widthInches × dpi` by `heightInches × dpi`.
+
+## Example NLP prompts
+
+### Woodland nursery
 
 ```text
-Format: 18x24 inches at 300 DPI, suitable for nursery wall art.
-Format: 12x16 inches at 300 DPI, suitable for nursery wall art.
-Format: 8x10 inches at 300 DPI, suitable for nursery wall art.
-```
-
-Final pixel size = `widthInches × dpi` by `heightInches × dpi` (e.g. 18×24 @ 300 DPI → 5400×7200).
-
-## Example configs
-
-### Woodland nursery (default)
-
-```text
-Generate 3 vertical poster images for a coordinated set of woodland nursery wall art.
-Style: soft vintage storybook style.
-Colors: muted sage green, cream, rust, and warm brown.
-Composition: centered compositions, clean cream background, no text, no watermark.
-Subjects: a friendly-looking fox, a friendly-looking bear, and a friendly-looking deer.
-Format: 18x24 inches at 300 DPI, suitable for nursery wall art.
+Make 3 vertical nursery wall posters in a soft vintage storybook style.
+Muted sage green, cream, rust, and warm brown. Centered on a clean cream background, no text.
+Subjects: a friendly fox, a friendly bear, and a friendly deer. 18x24 inches at 300 DPI.
 ```
 
 ### Space-themed nursery
 
 ```text
-Generate 3 vertical poster images for a coordinated set of space-themed nursery wall art.
-Style: soft vintage storybook style.
-Colors: muted navy, cream, soft gold, and dusty lavender.
-Composition: centered compositions, clean cream background, no text, no watermark.
-Subjects: a friendly-looking rocket, a friendly-looking crescent moon, and a friendly-looking star cluster.
-Format: 18x24 inches at 300 DPI, suitable for nursery wall art.
+Create 3 coordinated space nursery posters, soft storybook look, navy cream soft gold dusty lavender.
+Centered cream background, no watermark. Rocket, crescent moon, and star cluster. 18x24 at 300 DPI.
 ```
 
 ### Ocean-themed nursery
 
 ```text
-Generate 3 vertical poster images for a coordinated set of ocean-themed nursery wall art.
-Style: soft vintage storybook style.
-Colors: muted seafoam, cream, coral, and soft teal.
-Composition: centered compositions, clean cream background, no text, no watermark.
-Subjects: a friendly-looking whale, a friendly-looking seahorse, and a friendly-looking sea turtle.
-Format: 18x24 inches at 300 DPI, suitable for nursery wall art.
+3 ocean nursery posters, soft vintage storybook, seafoam cream coral teal.
+Centered compositions, no text. Whale, seahorse, sea turtle. Format 18x24 inches 300 DPI.
 ```
 
 ## If you get errors
 
-1. **Token** — Ensure `.env` exists and `REPLICATE_API_TOKEN` is a valid Replicate API token (not the placeholder from `.env.example`).
-2. **Model name** — Must stay `black-forest-labs/flux-kontext-pro` (set in `src/generate-posters.ts`).
-3. **Config shape** — Include a line like `Generate N … images for …` plus labeled `Style:`, `Colors:`, `Composition:`, `Subjects:`, and `Format:` lines.
-4. **Network / billing** — Check your Replicate account balance and that the machine can reach `api.replicate.com`.
+1. **Token** — Ensure `.env` has a valid `REPLICATE_API_TOKEN`.
+2. **Model** — Must stay `black-forest-labs/flux-kontext-pro`.
+3. **Empty prompt** — Submit non-empty text.
+4. **Network / billing** — Check Replicate balance and connectivity.
 
-Failed slots are logged and skipped; the script continues to the next image without retrying.
+Failed slots are logged and skipped; no retries. Check `docs/POSTERS.md` for the run row.

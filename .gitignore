@@ -5,3 +5,5 @@ output/
 .tools/
 *.log
 .DS_Store
+.cursor/
+.vscode/

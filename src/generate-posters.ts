@@ -20,6 +20,8 @@ export interface Config {
   widthInches: number;
   heightInches: number;
   dpi: number;
+  /** Original NLP / creative brief used when building the final model prompt. */
+  creativeBrief?: string;
 }
 
 function extractLabeledField(text: string, label: string): string | null {
@@ -122,20 +124,32 @@ export function parseConfig(text: string): Config {
     widthInches,
     heightInches,
     dpi,
+    creativeBrief: text,
   };
 }
 
 export function buildPrompt(config: Config, subject: string): string {
-  return [
+  const brief = (config.creativeBrief ?? "").trim();
+  const parts = [
     `Create a vertical poster image for ${config.theme}.`,
+    `Focus this image on: ${subject}.`,
     `Style: ${config.style}.`,
     `Colors: ${config.colors}.`,
     `Composition: ${config.composition}.`,
-    `This image should feature ${subject}, illustrated in ${config.style}, with gentle watercolor-like textures and slightly faded, nostalgic colors.`,
-    `Use a palette of ${config.colors}.`,
-    `${config.composition}.`,
-    `Format: ${config.widthInches}x${config.heightInches} inches at ${config.dpi} DPI, suitable for nursery wall art.`,
-  ].join(" ");
+  ];
+  if (brief) {
+    parts.push(`Creative brief: ${brief}`);
+  } else {
+    parts.push(
+      `This image should feature ${subject}, illustrated in ${config.style}, with gentle watercolor-like textures and slightly faded, nostalgic colors.`
+    );
+  }
+  parts.push(`Use a palette of ${config.colors}.`);
+  parts.push(`${config.composition}.`);
+  parts.push(
+    `Format: ${config.widthInches}x${config.heightInches} inches at ${config.dpi} DPI, suitable for wall art. No text, no watermark.`
+  );
+  return parts.join(" ");
 }
 
 /** Map print aspect ratio to the closest value accepted by the model. */
@@ -267,60 +281,15 @@ export interface GenerationResult {
   count: number;
 }
 
-/** Parse structured prompt text and generate posters (shared by CLI and UI). */
+/** @deprecated Prefer runWorkflow from ./workflow for NLP → structure → track. */
 export async function runGeneration(rawText: string): Promise<GenerationResult> {
-  const config = parseConfig(rawText);
-
-  if (config.count > MAX_IMAGES) {
-    console.warn(
-      `Warning: requested ${config.count} images; hard cap is ${MAX_IMAGES}. Generating ${MAX_IMAGES}.`
-    );
-    config.count = MAX_IMAGES;
-  }
-
-  console.log(
-    `Parsed config: count=${config.count}, subjects=${config.subjects.length}, ` +
-      `size=${config.widthInches}x${config.heightInches} in @ ${config.dpi} DPI, model=${MODEL}`
-  );
-  // If fewer subjects than count, cycle through the list (subjects[i % length]).
-  // Never invent subjects beyond what the config paragraph lists.
-
-  const files: string[] = [];
-  const errors: string[] = [];
-
-  for (let i = 0; i < config.count; i++) {
-    const subject = config.subjects[i % config.subjects.length];
-    const filename = `poster-${String(i + 1).padStart(2, "0")}.png`;
-    const prompt = buildPrompt(config, subject);
-
-    console.log(`\n[${i + 1}/${config.count}] Subject: ${subject}`);
-    console.log(`Prompt: ${prompt}`);
-
-    try {
-      const buffer = await generateImage(
-        prompt,
-        config.widthInches,
-        config.heightInches
-      );
-      await saveAsPrintReady(
-        buffer,
-        filename,
-        config.widthInches,
-        config.heightInches,
-        config.dpi
-      );
-      files.push(filename);
-      console.log(`Generated ${filename} using ${MODEL}`);
-    } catch (err) {
-      const message = err instanceof Error ? err.message : String(err);
-      errors.push(`${filename}: ${message}`);
-      console.error(`Error generating ${filename}: ${message}`);
-      console.error("Skipping this slot (no retry).");
-    }
-  }
-
-  console.log("\nDone.");
-  return { files, errors, count: config.count };
+  const { runWorkflow } = await import("./workflow");
+  const result = await runWorkflow(rawText);
+  return {
+    files: result.files,
+    errors: result.errors,
+    count: result.count,
+  };
 }
 
 async function main(): Promise<void> {
@@ -331,7 +300,8 @@ async function main(): Promise<void> {
 
   console.log(`Using config: ${configPath}`);
   const raw = fs.readFileSync(configPath, "utf8");
-  await runGeneration(raw);
+  const { runWorkflow } = await import("./workflow");
+  await runWorkflow(raw);
 }
 
 if (require.main === module) {

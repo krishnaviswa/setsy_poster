@@ -1,6 +1,6 @@
 # Etsy Posters
 
-Minimal Node + TypeScript tool that reads one natural-language paragraph from `config/prompt.txt` and generates up to 10 print-ready PNG posters via a single Replicate model (`black-forest-labs/flux-kontext-pro`). No local GPU required — inference is hosted only. See `docs/` for architecture and usage details.
+Minimal Node + TypeScript tool that takes a natural-language idea, structures it on the backend, saves a unique prompt file, and generates print-ready PNGs via Replicate (`black-forest-labs/flux-kontext-pro`). Runs are logged in `docs/POSTERS.md`. See `docs/WORKFLOW.md` for the step-by-step flow.
 
 ## Prerequisites
 
@@ -14,31 +14,24 @@ npm install
 cp .env.example .env
 ```
 
-Add your token to `.env` (`REPLICATE_API_TOKEN=...`), edit `config/prompt.txt`, then:
-
-```bash
-npm run dev
-```
-
-Or pass a custom prompt file:
-
-```bash
-npm run dev -- --file "customprompt.txt"
-```
-
-Print-ready PNGs are written to `output/poster-01.png`, `poster-02.png`, etc.
-
-## Web UI
-
-Start a simple local page to paste a prompt and submit:
+Add your token to `.env` (`REPLICATE_API_TOKEN=...`), then:
 
 ```bash
 npm run ui
 ```
 
-Open [http://localhost:8787](http://localhost:8787), paste your structured prompt, click **Submit**.
+Open [http://localhost:8787](http://localhost:8787), paste your idea, click **Submit**.
+
+CLI:
+
+```bash
+npm run dev
+npm run dev -- --file "config/Ganesha.txt"
+```
 
 ## Docs
 
-- [Architecture](docs/ARCHITECTURE.md) — flow, model, caps, cost behavior
-- [Usage](docs/USAGE.md) — editing the config, examples, troubleshooting
+- [Workflow](docs/WORKFLOW.md) — NLP → structure → save → API → track
+- [Poster log](docs/POSTERS.md) — history of generated runs
+- [Architecture](docs/ARCHITECTURE.md) — model, caps, cost behavior
+- [Usage](docs/USAGE.md) — editing prompts and troubleshooting

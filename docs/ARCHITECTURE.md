@@ -2,7 +2,7 @@
 
 ## Goal
 
-Generate **N** print-ready poster PNG images from a single natural-language paragraph in `config/prompt.txt`. No Etsy listing, mockup, or SEO logic.
+Accept a **natural-language** idea, structure it on the backend, save a unique prompt file, generate **N** print-ready poster PNGs, and append a row to `docs/POSTERS.md`. No Etsy listing, mockup, or SEO logic.
 
 ## Model
 
@@ -14,42 +14,36 @@ There is no model list, no fallback model, and no local GPU inference.
 
 ## Flow
 
-1. Read `.env` for `REPLICATE_API_TOKEN`.
-2. Read `config/prompt.txt` as plain text.
-3. Parse:
-   - `count` from `Generate N … images`
-   - `theme` from the text after `images for`
-   - `style`, `colors`, `composition`, `subjects`, `format` from labeled lines
-4. Cap `count` at **10** (log a warning if capped).
-5. For `i = 0 .. count - 1`:
-   - Pick subject `subjects[i % subjects.length]` (cycle if fewer subjects than count; never invent subjects).
-   - Build one prompt with `buildPrompt`.
-   - Call the model **once** via `generateImage`.
-   - On success, resize/convert with `sharp` and save `output/poster-XX.png`.
-   - On failure, log the error and continue to the next slot (no retry).
+See [WORKFLOW.md](WORKFLOW.md) for the six steps. Summary:
+
+1. Receive NLP (UI or `--file`).
+2. Structure into labeled fields + creative brief (`src/structure-prompt.ts`).
+3. Save `prompts/<timestamp>-<slug>.txt`.
+4. For each slot: build final prompt → one Replicate call.
+5. Save print-ready PNG via `sharp` to `output/<runId>-poster-XX.png`.
+6. Append run metadata to `docs/POSTERS.md`.
 
 ## Boundary conditions
 
 | Rule | Behavior |
 |------|----------|
-| Max images | Hard cap `N ≤ 10` |
+| Max images | Hard cap in code (`MAX_IMAGES`) |
 | API calls | Exactly one call per slot → total calls = N |
 | Retries | None |
 | Fallback models | None |
-| Subject invention | Forbidden — only subjects listed in the config |
+| Subject invention | Forbidden — only subjects supported by the input |
 | Extra features | No listings, mockups, SEO, or alternate sizes |
 
 ## Cost behavior
 
-- Each run costs **N** Replicate predictions (where N ≤ 10).
-- You control N by editing the `Generate N … images` line in `config/prompt.txt`.
-- Failed slots still count as attempted work for that run but are not retried, so you do not get surprise extra calls.
+- Each run costs **N** Replicate predictions (where N ≤ hard cap).
+- You control N via the natural-language prompt (with a hard cap).
+- Failed slots are not retried (no surprise extra calls).
 
 ## Key modules
 
-All logic lives in `src/generate-posters.ts`:
-
-- `parseConfig` — NLP-style field extraction with defaults
-- `buildPrompt` — per-subject prompt assembly
-- `generateImage` — single Replicate call → image `Buffer`
-- `saveAsPrintReady` — `sharp` resize to `widthInches * dpi` × `heightInches * dpi`, sRGB PNG
+- `src/structure-prompt.ts` — NLP → structured prompt text + `Config`
+- `src/workflow.ts` — orchestrates the six steps
+- `src/generate-posters.ts` — Replicate call + `sharp` print prep + CLI entry
+- `src/track-posters.ts` — append to `docs/POSTERS.md`
+- `src/server.ts` + `public/index.html` — local paste & submit UI

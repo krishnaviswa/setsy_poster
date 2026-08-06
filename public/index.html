@@ -9,7 +9,6 @@
         --ink: #1c1917;
         --muted: #57534e;
         --line: #d6d3d1;
-        --bg: #f5f0e8;
         --panel: #fffcf7;
         --accent: #0f766e;
         --accent-hover: #0d9488;
@@ -108,6 +107,7 @@
         margin-top: 1rem;
         min-height: 1.4rem;
         color: var(--muted);
+        white-space: pre-wrap;
       }
 
       #status.error {
@@ -121,6 +121,12 @@
       #results h2 {
         margin: 0 0 0.75rem;
         font-size: 1.15rem;
+      }
+
+      .meta {
+        margin: 0 0 0.75rem;
+        font-size: 0.9rem;
+        color: var(--muted);
       }
 
       .grid {
@@ -148,6 +154,7 @@
         margin: 0;
         padding: 0.55rem 0.7rem;
         font-size: 0.85rem;
+        word-break: break-all;
       }
 
       .hint {
@@ -155,40 +162,47 @@
         font-size: 0.85rem;
         color: var(--muted);
       }
+
+      .steps {
+        margin: 0.75rem 0 0;
+        padding-left: 1.2rem;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
     </style>
   </head>
   <body>
     <main>
       <h1>Poster generator</h1>
       <p class="lead">
-        Paste a structured prompt (Generate N images, Style, Colors, Composition,
-        Subjects, Format), then submit. Images save to <code>output/</code>.
+        Paste a natural-language idea (as you would write it). The backend structures it,
+        saves a unique file under <code>prompts/</code>, calls Replicate, and logs the run
+        in <code>docs/POSTERS.md</code>.
       </p>
 
       <form id="form">
-        <label for="prompt">Prompt</label>
+        <label for="prompt">Natural-language prompt</label>
         <textarea
           id="prompt"
           name="prompt"
           spellcheck="true"
           required
-        >Generate 3 vertical poster images for a coordinated set of woodland nursery wall art.
-Style: soft vintage storybook style.
-Colors: muted sage green, cream, rust, and warm brown.
-Composition: centered compositions, clean cream background, no text, no watermark.
-Subjects: a friendly-looking fox, a friendly-looking bear, and a friendly-looking deer.
-Format: 18x24 inches at 300 DPI, suitable for nursery wall art.</textarea>
+          placeholder="Describe the poster set in your own words…"
+        >Create a majestic, powerful, and beautifully sculpted depiction of Lord Ganesha for a single vertical wall-art poster at 18x24 inches 300 DPI. Peaceful expression, traditional iconography, rich red saffron and gold, centered temple atmosphere, no text, no watermark.</textarea>
         <div class="actions">
           <button type="submit" id="submit">Submit</button>
         </div>
         <p class="hint">
-          Generation can take several minutes. Keep this tab open until it finishes.
+          Workflow: NLP → structure → save prompt → API → PNGs → update poster log.
+          Generation can take several minutes.
         </p>
       </form>
 
       <p id="status" aria-live="polite"></p>
+      <ul id="steps" class="steps" hidden></ul>
       <section id="results" hidden>
         <h2>Results</h2>
+        <p class="meta" id="meta"></p>
         <div class="grid" id="grid"></div>
       </section>
     </main>
@@ -198,7 +212,9 @@ Format: 18x24 inches at 300 DPI, suitable for nursery wall art.</textarea>
       const promptEl = document.getElementById("prompt");
       const submitBtn = document.getElementById("submit");
       const statusEl = document.getElementById("status");
+      const stepsEl = document.getElementById("steps");
       const resultsEl = document.getElementById("results");
+      const metaEl = document.getElementById("meta");
       const gridEl = document.getElementById("grid");
 
       form.addEventListener("submit", async (event) => {
@@ -208,9 +224,12 @@ Format: 18x24 inches at 300 DPI, suitable for nursery wall art.</textarea>
 
         submitBtn.disabled = true;
         statusEl.classList.remove("error");
-        statusEl.textContent = "Generating… this can take a few minutes.";
+        statusEl.textContent = "Running workflow… this can take a few minutes.";
+        stepsEl.hidden = true;
+        stepsEl.innerHTML = "";
         resultsEl.hidden = true;
         gridEl.innerHTML = "";
+        metaEl.textContent = "";
 
         try {
           const response = await fetch("/api/generate", {
@@ -230,8 +249,24 @@ Format: 18x24 inches at 300 DPI, suitable for nursery wall art.</textarea>
             files.length +
             " of " +
             data.count +
-            " image(s)." +
-            (errors.length ? " Some slots failed — see console/server logs." : "");
+            " image(s).";
+
+          if (Array.isArray(data.steps) && data.steps.length) {
+            stepsEl.hidden = false;
+            for (const step of data.steps) {
+              const li = document.createElement("li");
+              li.textContent = step;
+              stepsEl.appendChild(li);
+            }
+          }
+
+          metaEl.textContent =
+            "Run: " +
+            (data.runId || "—") +
+            " · Prompt file: " +
+            (data.promptFile || "—") +
+            " · Log: " +
+            (data.trackingFile || "docs/POSTERS.md");
 
           if (files.length) {
             resultsEl.hidden = false;
@@ -251,7 +286,7 @@ Format: 18x24 inches at 300 DPI, suitable for nursery wall art.</textarea>
 
           if (errors.length) {
             statusEl.classList.add("error");
-            statusEl.textContent += " Errors: " + errors.join(" | ");
+            statusEl.textContent += "\nErrors: " + errors.join(" | ");
           }
         } catch (err) {
           statusEl.classList.add("error");
