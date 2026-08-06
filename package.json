@@ -1,0 +1,24 @@
+{
+  "name": "etsy-posters",
+  "version": "1.0.0",
+  "description": "Generate print-ready nursery poster images from a single config paragraph using Replicate flux-kontext-pro.",
+  "private": true,
+  "scripts": {
+    "dev": "ts-node src/generate-posters.ts",
+    "build": "tsc",
+    "start": "node dist/generate-posters.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "replicate": "^1.0.1",
+    "sharp": "^0.33.5"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3"
+  }
+}
