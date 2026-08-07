@@ -1,0 +1,24 @@
+Generate 3 vertical poster images for a highly educational vertical genetics infographic poster titled “Gregor Mendel and Genetic Inheritance in Pea Plants....
+Style: high-end cinematic realism.
+Colors: gold, red.
+Composition: centered poster composition, clean background, no text, no watermark.
+Subjects: the main subject described in the creative brief.
+Format: 18x24 inches at 300 DPI, suitable for wall art.
+
+Creative brief:
+Create a highly educational vertical genetics infographic poster titled “Gregor Mendel and Genetic Inheritance in Pea Plants.” Use a clear classroom-teaching perspective with a structured top-to-bottom flowchart, large readable panels, labeled arrows, simple diagrams, and short explanations built directly into the poster.
+
+At the top, show the purpose: “How traits pass from parents to offspring.” Introduce the key terms in a small concept box: gene = a unit of heredity, allele = an alternative form of a gene, genotype = genetic combination, phenotype = visible characteristic, dominant allele = expressed when present, recessive allele = expressed only when two copies are inherited.
+
+Show the PARENTAL GENERATION (P): a true-breeding tall pea plant with genotype TT crossed with a true-breeding short pea plant with genotype tt. Add a short explanation: “Each parent contributes one allele.” Use a clear arrow labeled “cross-pollination.”
+
+Show the FIRST OFFSPRING GENERATION (F1): all offspring are tall hybrid plants with genotype Tt. Add the explanation: “T is dominant, so the recessive t trait is hidden.” Include a small visual key: genotype Tt = heterozygous; phenotype = tall.
+
+Show the SECOND GENERATION (F2): two F1 hybrid plants self-pollinate, Tt × Tt. Include a large, easy-to-read Punnett square with four boxes: TT, Tt, Tt, tt. Explain: “Allele pairs separate during gamete formation.” Clearly display the results: genotype ratio 1 TT : 2 Tt : 1 tt; phenotype ratio 3 tall : 1 short.
+
+Show the THIRD GENERATION (F3) as three branching flowchart paths from selected F2 plants:
+1. F2 TT tall plant × TT tall plant → all TT tall offspring; explanation: “Pure-breeding dominant.”
+2. F2 Tt tall plant × Tt tall plant → TT, Tt, Tt, tt; approximately 3 tall : 1 short; explanation: “Hybrid dominant; recessive trait can reappear.”
+3. F2 tt short plant × tt short plant → all tt short offspring; explanation: “Pure-breeding recessive.”
+
+End with a summary panel: “Mendel’s principles: dominance, segregation, and predictable inheritance patterns.” Include a simple legend explaining T = tall allele and t = short allele. Use standardized flowchart shapes: rectangles for processes, diamonds for genetic decisions, arrows for inheritance direction, and color-coded generations: P generation in deep green, F1 in blue-green, F2 in gold, F3 in purple. Use realistic pea-plant illustrations next to each generation, clean white or parchment background, excellent hierarchy, classroom textbook layout, accurate biological content, vertical 2:3 poster, high-resolution print-ready design, clear visual spacing, no decorative clutter.

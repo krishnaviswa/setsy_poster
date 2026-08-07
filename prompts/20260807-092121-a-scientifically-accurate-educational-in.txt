@@ -1,0 +1,61 @@
+Generate 3 vertical poster images for a scientifically accurate educational infographic poster titled “Gregor Mendel: What Appears in the Second Generation....
+Style: high-end cinematic realism.
+Colors: gold, red.
+Composition: centered poster composition, clean background, no text, no watermark.
+Subjects: the main subject described in the creative brief.
+Format: 18x24 inches at 300 DPI, suitable for wall art.
+
+Creative brief:
+Create a scientifically accurate educational infographic poster titled “Gregor Mendel: What Appears in the Second Generation?” Use a clear classroom perspective, large visible pea plants, a top-to-bottom flowchart, labeled generation panels, arrows, genotype boxes, and short explanations integrated into the design.
+
+TOP PANEL — PARENTAL GENERATION, P:
+Show two separate true-breeding pea-plant crosses:
+A. Plant-height cross: one clearly TALL green pea plant labeled TT crossed with one clearly DWARF, SHORT pea plant labeled tt.
+B. Flower-color cross: one pea plant with clearly VIOLET/PURPLE flowers labeled PP crossed with one pea plant with clearly WHITE flowers labeled pp.
+Show the parent plants as visibly different, not identical. Add a clear explanation box: “Each parent passes one allele to its offspring.”
+
+MIDDLE PANEL — F1 FIRST-GENERATION OFFSPRING:
+Show the offspring from both crosses.
+A. Height F1: all offspring must be visibly TALL, labeled Tt.
+B. Flower-color F1: all offspring must have clearly VIOLET/PURPLE FLOWERS, labeled Pp.
+Add the explanation: “The dominant trait appears in every F1 plant. The recessive trait is present but hidden.”
+Make the dwarf form absent from the F1 height plants, but clearly explain that the dwarf allele is still carried by the hybrids.
+
+LARGE CENTRAL PANEL — F2 SECOND-GENERATION OFFSPRING:
+Show self-pollination of two F1 plants using clear arrows:
+Tt × Tt for plant height.
+Pp × Pp for flower color.
+
+For the HEIGHT F2 panel, display four large, separate pea plants:
+1. Tall plant, genotype TT.
+2. Tall plant, genotype Tt.
+3. Tall plant, genotype Tt.
+4. Clearly dwarf, short plant with visibly short stem and compact height, genotype tt.
+Place the dwarf plant in a contrasting color and make it impossible to mistake for a tall plant. Add: “Phenotype ratio: 3 tall : 1 dwarf” and “Genotype ratio: 1 TT : 2 Tt : 1 tt.”
+
+For the FLOWER-COLOR F2 panel, display four large, separate flowering pea plants:
+1. Tall plant with clearly visible violet/purple flowers, genotype PP.
+2. Tall plant with clearly visible violet/purple flowers, genotype Pp.
+3. Tall plant with clearly visible violet/purple flowers, genotype Pp.
+4. Plant with clearly visible white flowers, genotype pp.
+Make the white flowers large, bright, and unmistakable. Add: “Phenotype ratio: 3 violet/purple : 1 white” and “Genotype ratio: 1 PP : 2 Pp : 1 pp.”
+
+Add two separate Punnett squares beside the F2 plants:
+Tt × Tt → TT, Tt, Tt, tt.
+Pp × Pp → PP, Pp, Pp, pp.
+Use arrows from every Punnett-square result to the corresponding visible plant.
+
+BOTTOM PANEL — F3 FOLLOW-UP:
+Show three clearly separated branches:
+A. TT tall F2 plant × TT tall F2 plant → all tall offspring.
+B. Tt tall F2 plant × Tt tall F2 plant → approximately 3 tall and 1 dwarf offspring.
+C. tt dwarf F2 plant × tt dwarf F2 plant → all dwarf offspring.
+For flower color, show:
+PP × PP → all violet flowers.
+Pp × Pp → approximately 3 violet-flowered and 1 white-flowered offspring.
+pp × pp → all white flowers.
+
+Add a final summary box:
+“Dominant traits appear in F1. Recessive traits reappear in F2. Allele pairs separate during reproduction. The visible F2 ratio is approximately 3:1, while the genotype ratio is 1:2:1.”
+
+Use realistic botanical pea plants, not abstract icons. Make height differences exaggerated and obvious: tall plants must be several times higher than dwarf plants. Make flower colors unmistakable: saturated violet-purple flowers versus bright white flowers. Use color-coded tracks: green for height, purple for flower color, gold for F2, and blue for F3. Use rectangles for explanations, circles for generations, diamonds for inheritance decisions, and thick directional arrows for the flowchart. Clean educational textbook layout, parchment background, high contrast, precise spacing, vertical 2:3 poster, print-ready, no decorative forest scene, no hidden plants, no missing dwarf plants, no missing white flowers, no ambiguous flower colors, no random text, no gibberish labels.

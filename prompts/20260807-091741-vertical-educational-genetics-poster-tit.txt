@@ -1,0 +1,9 @@
+Generate 3 vertical poster images for Vertical educational genetics poster titled “Gregor Mendel: Inheritance in Pea Plants,” showing a clear multi-generat....
+Style: high-end cinematic realism.
+Colors: cream, gold, red.
+Composition: centered poster composition, clean background, no text, no watermark.
+Subjects: the main subject described in the creative brief.
+Format: 18x24 inches at 300 DPI, suitable for wall art.
+
+Creative brief:
+Vertical educational genetics poster titled “Gregor Mendel: Inheritance in Pea Plants,” showing a clear multi-generation breeding diagram from left to right. Begin with the P generation: true-breeding tall pea plant crossed with a true-breeding short pea plant, labeled TT × tt. Show the F1 offspring generation: all tall hybrid pea plants labeled Tt. Then show self-pollination of two F1 plants, Tt × Tt, leading to the F2 generation with four clear outcomes: TT tall, Tt tall, Tt tall, and tt short, displaying an accurate 3:1 visible-trait ratio and 1:2:1 genotype ratio. Continue to the F3 generation by showing that selected F2 tall plants produce different results: pure TT plants produce all tall offspring, hybrid Tt plants produce approximately three tall to one short offspring, and tt short plants produce all short offspring. Include realistic botanical pea plants, purple and white flowers, green leaves, roots, pea pods, small inheritance symbols, Punnett-square-inspired layouts, arrows showing pollination and offspring, Gregor Mendel in a 19th-century monastery garden, vintage botanical textbook illustration combined with a clean modern science infographic, parchment background, forest green, pea green, purple, cream, and antique gold palette, accurate scientific arrangement, generous spacing, vertical 2:3 poster, print-ready, leave labels and titles as clean blank areas for typography added later, no gibberish text, no extra generations, no modern laboratory equipment.
