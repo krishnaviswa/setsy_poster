@@ -135,22 +135,24 @@ Do not rely on a single blog claiming that a product is “guaranteed” to sell
 
 ### What to record for each promising niche
 
-| Field | What to record |
-| --- | --- |
-| Niche | Specific subject or décor category |
-| Style | Minimalist, retro, boho, abstract, etc. |
-| Audience | Room, buyer type, occasion, or interest |
-| Etsy search phrase | Exact phrase searched |
-| Buyer intent | Décor, gift, nursery, office, seasonal, custom, etc. |
-| Digital-only evidence | Why the product is downloadable rather than physical |
-| Typical files | JPG, PNG, PDF, ZIP, or other |
-| Ratios/sizes | Ratios or print sizes mentioned by sellers |
-| Single-item price | Observed range, if available |
-| Bundle price | Observed range, if available |
-| Differentiation opportunity | A concrete way to make an original product better |
-| Competition notes | Similarity, saturation, and quality level |
-| Risk notes | Copyright, trademark, likeness, or policy concerns |
-| Source links | Etsy and research URLs |
+
+| Field                       | What to record                                       |
+| --------------------------- | ---------------------------------------------------- |
+| Niche                       | Specific subject or décor category                   |
+| Style                       | Minimalist, retro, boho, abstract, etc.              |
+| Audience                    | Room, buyer type, occasion, or interest              |
+| Etsy search phrase          | Exact phrase searched                                |
+| Buyer intent                | Décor, gift, nursery, office, seasonal, custom, etc. |
+| Digital-only evidence       | Why the product is downloadable rather than physical |
+| Typical files               | JPG, PNG, PDF, ZIP, or other                         |
+| Ratios/sizes                | Ratios or print sizes mentioned by sellers           |
+| Single-item price           | Observed range, if available                         |
+| Bundle price                | Observed range, if available                         |
+| Differentiation opportunity | A concrete way to make an original product better    |
+| Competition notes           | Similarity, saturation, and quality level            |
+| Risk notes                  | Copyright, trademark, likeness, or policy concerns   |
+| Source links                | Etsy and research URLs                               |
+
 
 ### How to evaluate demand without overclaiming
 
@@ -254,7 +256,7 @@ If AI tools are used:
 - Disclose AI use in the Etsy listing where required by Etsy policy.
 - Do not sell the prompt as a substitute for the artwork unless that is separately permitted and accurately described.
 
-Etsy’s Seller Handbook says sellers may use their original prompts with AI tools to create artwork, but AI use must be disclosed in the listing description. Verify the current policy before publishing because marketplace rules can change. Source: https://www.etsy.com/seller-handbook/article/1275449912004
+Etsy’s Seller Handbook says sellers may use their original prompts with AI tools to create artwork, but AI use must be disclosed in the listing description. Verify the current policy before publishing because marketplace rules can change. Source: [https://www.etsy.com/seller-handbook/article/1275449912004](https://www.etsy.com/seller-handbook/article/1275449912004)
 
 ### Final research output
 
@@ -298,29 +300,33 @@ If the answer to any important question is no or unknown, mark the idea **needs 
 
 ### 1. Promising digital-only poster niches (8)
 
-| Label | Niche | Demand signal (directional) |
-| --- | --- | --- |
-| Worth testing | Warm-neutral botanical gallery sets (printable) | Repeatedly cited as evergreen décor + set purchases |
-| Worth testing | Soft storybook nursery animal sets (digital) | High set AOV pattern; year-round + baby-shower gift intent |
-| Crowded but workable | Minimalist abstract / color-block printables | High search interest; differentiation via palette systems |
-| Worth testing | Dark academia / moody study printables (original art) | Style-specific search demand; avoid trademarked book covers |
-| Promising | Japandi / calm Scandinavian printable sets | Overlaps warm neutrals; calmer competition than generic “minimalist” |
-| Crowded | Motivational typography printables | Easy entry, price pressure, font/trademark risk |
-| Worth testing | Retro kitchen / coffee printables (original, non-brand) | Room-specific intent; avoid brand logos |
-| Needs more validation | Vintage-style original travel posters (city-inspired, non-IP) | Strong aesthetic demand; risk if city marks / tourism IP appear |
+
+| Label                 | Niche                                                         | Demand signal (directional)                                          |
+| --------------------- | ------------------------------------------------------------- | -------------------------------------------------------------------- |
+| Worth testing         | Warm-neutral botanical gallery sets (printable)               | Repeatedly cited as evergreen décor + set purchases                  |
+| Worth testing         | Soft storybook nursery animal sets (digital)                  | High set AOV pattern; year-round + baby-shower gift intent           |
+| Crowded but workable  | Minimalist abstract / color-block printables                  | High search interest; differentiation via palette systems            |
+| Worth testing         | Dark academia / moody study printables (original art)         | Style-specific search demand; avoid trademarked book covers          |
+| Promising             | Japandi / calm Scandinavian printable sets                    | Overlaps warm neutrals; calmer competition than generic “minimalist” |
+| Crowded               | Motivational typography printables                            | Easy entry, price pressure, font/trademark risk                      |
+| Worth testing         | Retro kitchen / coffee printables (original, non-brand)       | Room-specific intent; avoid brand logos                              |
+| Needs more validation | Vintage-style original travel posters (city-inspired, non-IP) | Strong aesthetic demand; risk if city marks / tourism IP appear      |
+
 
 ### 2. Comparison table
 
-| Niche | Style | Audience | Etsy search phrase | Buyer intent | Digital-only evidence | Typical files | Ratios/sizes | Single-item price | Bundle price | Differentiation opportunity | Competition notes | Risk notes | Source links |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Warm botanical gallery | Soft watercolor / quiet luxury | Living room, bedroom | botanical gallery wall printable | Décor, gift | Listings labeled instant download / printable | JPG/PNG ZIP + size guide | 2:3, 3:4, 4:5, 11:14, ISO | ~$5–$18 (blogs) | ~$12–$35 for 3–6 | Cohesive 6-print palette + better mockups | Crowded; quality varies | Plant species names OK; avoid branded botanicals | [ShopFoundry](https://www.shopfoundry.app/trends/etsy-wall-art), [Insight Agent](https://www.insightagent.app/guides/best-selling-printable-wall-art-etsy) |
-| Nursery animal storybook | Soft vintage illustration | Parents, nurseries | nursery animal digital art | Nursery, gift | Instant download language + “no physical item” | JPG ZIP, sometimes PDF guide | 3:4 & 2:3 common | ~$6–$20 | ~$12–$40 for 3–6 | Coordinated 3/6 set with shared cream ground | Very crowded | No copyrighted characters | Same + [Anlyzo](https://anlyzo.com/blog/sell-wall-art-prints-on-etsy) |
-| Minimalist abstract | Geometric / brush / color field | Modern homes, offices | abstract printable poster | Décor | Digital download category | High-res JPG | Multi-ratio packs | ~$5–$25 | ~$15–$40 | Distinct limited palette system | Very crowded | Low IP risk if original | Insight Agent abstract notes |
-| Dark academia original | Moody charcoal, library tones | Students, offices | dark academia printable poster | Décor, aesthetic | Instant download | JPG ZIP | Multi-ratio | Uncertain | Uncertain | Original still-life / architecture motifs | Growing | No famous book covers, no Harry Potter-style IP | ShopFoundry trend notes |
-| Japandi / Scandi calm | Soft linen texture, muted | Living rooms | japandi printable wall art | Décor | Printable + download wording | JPG | Multi-ratio | Uncertain | Uncertain | Texture + quiet composition system | Moderate–high | Low if original | ShopFoundry warm-neutral shift |
-| Motivational typography | Clean type on neutral ground | Offices, gifts | printable quote poster | Gift, office | Instant download | JPG/PDF | Often 4:5 / 2:3 | ~$3–$15 | Lower for packs | Better typography + original quotes only | Extremely crowded | Trademarked slogans; font licensing | Insight Agent quote niche |
-| Retro kitchen / coffee | Mid-century / vintage poster | Kitchen | retro kitchen digital poster | Kitchen décor | Digital download | JPG | 2:3 / 3:4 | Uncertain | Uncertain | Original food/drink scenes, no brands | Moderate | No Starbucks/etc. marks | Preferred category list |
-| Original travel poster | Vintage travel-inspired | Gifts, gallery walls | vintage style digital poster | Gift, décor | Instant download | JPG ZIP | Multi-ratio | ~$8–$25 (blogs) | Bundle uncertain | Invented destinations / original geometry | Crowded for famous cities | City marks, airline IP, tourism brands | Insight Agent vintage |
+
+| Niche                    | Style                           | Audience              | Etsy search phrase               | Buyer intent     | Digital-only evidence                          | Typical files                | Ratios/sizes              | Single-item price | Bundle price     | Differentiation opportunity                  | Competition notes         | Risk notes                                       | Source links                                                                                                                                               |
+| ------------------------ | ------------------------------- | --------------------- | -------------------------------- | ---------------- | ---------------------------------------------- | ---------------------------- | ------------------------- | ----------------- | ---------------- | -------------------------------------------- | ------------------------- | ------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Warm botanical gallery   | Soft watercolor / quiet luxury  | Living room, bedroom  | botanical gallery wall printable | Décor, gift      | Listings labeled instant download / printable  | JPG/PNG ZIP + size guide     | 2:3, 3:4, 4:5, 11:14, ISO | ~$5–$18 (blogs)   | ~$12–$35 for 3–6 | Cohesive 6-print palette + better mockups    | Crowded; quality varies   | Plant species names OK; avoid branded botanicals | [ShopFoundry](https://www.shopfoundry.app/trends/etsy-wall-art), [Insight Agent](https://www.insightagent.app/guides/best-selling-printable-wall-art-etsy) |
+| Nursery animal storybook | Soft vintage illustration       | Parents, nurseries    | nursery animal digital art       | Nursery, gift    | Instant download language + “no physical item” | JPG ZIP, sometimes PDF guide | 3:4 & 2:3 common          | ~$6–$20           | ~$12–$40 for 3–6 | Coordinated 3/6 set with shared cream ground | Very crowded              | No copyrighted characters                        | Same + [Anlyzo](https://anlyzo.com/blog/sell-wall-art-prints-on-etsy)                                                                                      |
+| Minimalist abstract      | Geometric / brush / color field | Modern homes, offices | abstract printable poster        | Décor            | Digital download category                      | High-res JPG                 | Multi-ratio packs         | ~$5–$25           | ~$15–$40         | Distinct limited palette system              | Very crowded              | Low IP risk if original                          | Insight Agent abstract notes                                                                                                                               |
+| Dark academia original   | Moody charcoal, library tones   | Students, offices     | dark academia printable poster   | Décor, aesthetic | Instant download                               | JPG ZIP                      | Multi-ratio               | Uncertain         | Uncertain        | Original still-life / architecture motifs    | Growing                   | No famous book covers, no Harry Potter-style IP  | ShopFoundry trend notes                                                                                                                                    |
+| Japandi / Scandi calm    | Soft linen texture, muted       | Living rooms          | japandi printable wall art       | Décor            | Printable + download wording                   | JPG                          | Multi-ratio               | Uncertain         | Uncertain        | Texture + quiet composition system           | Moderate–high             | Low if original                                  | ShopFoundry warm-neutral shift                                                                                                                             |
+| Motivational typography  | Clean type on neutral ground    | Offices, gifts        | printable quote poster           | Gift, office     | Instant download                               | JPG/PDF                      | Often 4:5 / 2:3           | ~$3–$15           | Lower for packs  | Better typography + original quotes only     | Extremely crowded         | Trademarked slogans; font licensing              | Insight Agent quote niche                                                                                                                                  |
+| Retro kitchen / coffee   | Mid-century / vintage poster    | Kitchen               | retro kitchen digital poster     | Kitchen décor    | Digital download                               | JPG                          | 2:3 / 3:4                 | Uncertain         | Uncertain        | Original food/drink scenes, no brands        | Moderate                  | No Starbucks/etc. marks                          | Preferred category list                                                                                                                                    |
+| Original travel poster   | Vintage travel-inspired         | Gifts, gallery walls  | vintage style digital poster     | Gift, décor      | Instant download                               | JPG ZIP                      | Multi-ratio               | ~$8–$25 (blogs)   | Bundle uncertain | Invented destinations / original geometry    | Crowded for famous cities | City marks, airline IP, tourism brands           | Insight Agent vintage                                                                                                                                      |
+
 
 **Price ranges and monthly search figures above are mostly from third-party blogs → needs verification on live Etsy.**
 
@@ -349,14 +355,16 @@ Visual system: cream ground, muted sage / rust / warm brown, gentle watercolor-l
 
 ### 5. Suggested Etsy search phrases (per concept)
 
-| Concept | Phrases to test |
-| --- | --- |
-| Fox / bear / deer solos | `nursery animal digital art`, `printable woodland nursery art`, `fox nursery printable wall art` |
-| Owl / rabbit / hedgehog | `owl nursery printable`, `rabbit nursery wall art digital`, `hedgehog nursery digital download` |
-| Woodland trio set | `nursery gallery wall printable`, `woodland nursery printable set`, `set of 3 nursery digital art` |
-| Night-sky set | `celestial nursery printable art`, `moon nursery digital download` (avoid trademarked “moon child” brands) |
-| Seasonal pack of 6 | `nursery wall art bundle digital download`, `woodland nursery printable bundle` |
-| Custom name + animal | `custom nursery name digital print`, `personalized nursery animal printable` |
+
+| Concept                 | Phrases to test                                                                                            |
+| ----------------------- | ---------------------------------------------------------------------------------------------------------- |
+| Fox / bear / deer solos | `nursery animal digital art`, `printable woodland nursery art`, `fox nursery printable wall art`           |
+| Owl / rabbit / hedgehog | `owl nursery printable`, `rabbit nursery wall art digital`, `hedgehog nursery digital download`            |
+| Woodland trio set       | `nursery gallery wall printable`, `woodland nursery printable set`, `set of 3 nursery digital art`         |
+| Night-sky set           | `celestial nursery printable art`, `moon nursery digital download` (avoid trademarked “moon child” brands) |
+| Seasonal pack of 6      | `nursery wall art bundle digital download`, `woodland nursery printable bundle`                            |
+| Custom name + animal    | `custom nursery name digital print`, `personalized nursery animal printable`                               |
+
 
 ### 6. Digital-file package (standard for each concept)
 
@@ -408,27 +416,31 @@ Refunds for digital downloads follow Etsy’s current digital item policies.
 
 ### 8. Copyright, trademark, and AI-policy risk check
 
-| Topic | Finding | Action |
-| --- | --- | --- |
-| AI sales | Allowed when seller uses original prompts/tools and discloses AI in the listing description | Disclose if AI used; attribute appropriately (“Designed by…”) |
-| AI prompt packs | **Prohibited** as standalone products | Do not sell prompt packs |
-| Copyrighted characters | Excluded from research | No Disney/etc. animals; invent original characters |
-| Quotes / slogans | High trademark risk in typography niche | Prefer original short phrases or text-free art |
-| City / travel art | Possible tourism mark / brand issues | Invented destinations safer than trademarked attractions |
-| Generator license | Commercial use depends on tool terms | Confirm Replicate / model license before selling |
-| Policy source | Official handbook article (verify before publish) | https://www.etsy.com/seller-handbook/article/1275449912004 |
+
+| Topic                  | Finding                                                                                     | Action                                                                                                                   |
+| ---------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| AI sales               | Allowed when seller uses original prompts/tools and discloses AI in the listing description | Disclose if AI used; attribute appropriately (“Designed by…”)                                                            |
+| AI prompt packs        | **Prohibited** as standalone products                                                       | Do not sell prompt packs                                                                                                 |
+| Copyrighted characters | Excluded from research                                                                      | No Disney/etc. animals; invent original characters                                                                       |
+| Quotes / slogans       | High trademark risk in typography niche                                                     | Prefer original short phrases or text-free art                                                                           |
+| City / travel art      | Possible tourism mark / brand issues                                                        | Invented destinations safer than trademarked attractions                                                                 |
+| Generator license      | Commercial use depends on tool terms                                                        | Confirm Replicate / model license before selling                                                                         |
+| Policy source          | Official handbook article (verify before publish)                                           | [https://www.etsy.com/seller-handbook/article/1275449912004](https://www.etsy.com/seller-handbook/article/1275449912004) |
+
 
 ### 9. Seven-day validation plan
 
-| Day | Action |
-| --- | --- |
-| 1 | On Etsy, search `nursery animal digital art`, `woodland nursery printable set`, `botanical gallery wall printable`, `japandi printable wall art`. Record result relevance, first-page styles, and how many are clearly digital-only. |
-| 2 | Open 15 digital-only listings across the top 3 niches. Note price, file types, ratios, “no physical item” wording, review recency. |
-| 3 | Compare bundle vs single pricing and mockup quality. List 5 weaknesses (poor ratios, no size guide, inconsistent palette). |
-| 4 | Keyword shortlist: 20 long-tail phrases. Drop any that mostly return physical/POD. |
-| 5 | Design 3 sample artworks in one palette (fox/bear/deer). Prepare multi-ratio files + size guide PDF. |
-| 6 | Draft 1 single listing + 1 set-of-3 listing with digital-only notices and AI disclosure if needed. |
-| 7 | Soft launch 2 listings. Track impressions/favorites for 7 more days; do not claim success from one weekend. |
+
+| Day | Action                                                                                                                                                                                                                               |
+| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 1   | On Etsy, search `nursery animal digital art`, `woodland nursery printable set`, `botanical gallery wall printable`, `japandi printable wall art`. Record result relevance, first-page styles, and how many are clearly digital-only. |
+| 2   | Open 15 digital-only listings across the top 3 niches. Note price, file types, ratios, “no physical item” wording, review recency.                                                                                                   |
+| 3   | Compare bundle vs single pricing and mockup quality. List 5 weaknesses (poor ratios, no size guide, inconsistent palette).                                                                                                           |
+| 4   | Keyword shortlist: 20 long-tail phrases. Drop any that mostly return physical/POD.                                                                                                                                                   |
+| 5   | Design 3 sample artworks in one palette (fox/bear/deer). Prepare multi-ratio files + size guide PDF.                                                                                                                                 |
+| 6   | Draft 1 single listing + 1 set-of-3 listing with digital-only notices and AI disclosure if needed.                                                                                                                                   |
+| 7   | Soft launch 2 listings. Track impressions/favorites for 7 more days; do not claim success from one weekend.                                                                                                                          |
+
 
 ### 10. Claims that could not be verified in this pass
 
@@ -441,16 +453,18 @@ Refunds for digital downloads follow Etsy’s current digital item policies.
 
 ### Strict final filter (applied)
 
-| Question | Nursery woodland set | Botanical gallery | Japandi calm set |
-| --- | --- | --- | --- |
-| Digital-only? | Yes (by design) | Yes | Yes |
-| Customer downloads? | Yes | Yes | Yes |
-| No seller delivery? | Yes | Yes | Yes |
-| Can be original? | Yes | Yes | Yes |
-| Clear use case? | Yes | Yes | Yes |
+
+| Question                 | Nursery woodland set  | Botanical gallery     | Japandi calm set      |
+| ------------------------ | --------------------- | --------------------- | --------------------- |
+| Digital-only?            | Yes (by design)       | Yes                   | Yes                   |
+| Customer downloads?      | Yes                   | Yes                   | Yes                   |
+| No seller delivery?      | Yes                   | Yes                   | Yes                   |
+| Can be original?         | Yes                   | Yes                   | Yes                   |
+| Clear use case?          | Yes                   | Yes                   | Yes                   |
 | Keyword specific enough? | Yes — needs live test | Yes — needs live test | Needs more validation |
-| IP checked? | Yes at concept level | Yes at concept level | Yes at concept level |
-| AI disclosure planned? | Required if AI used | Required if AI used | Required if AI used |
+| IP checked?              | Yes at concept level  | Yes at concept level  | Yes at concept level  |
+| AI disclosure planned?   | Required if AI used   | Required if AI used   | Required if AI used   |
+
 
 **Verdict:** Nursery woodland coordinated set is **worth testing** first with this shop’s existing generator workflow. Botanical gallery is the second test. Japandi remains **needs more validation** until live Etsy keyword competition is checked.
 
@@ -458,12 +472,12 @@ Refunds for digital downloads follow Etsy’s current digital item policies.
 
 ## Part C — Sources
 
-- Etsy Seller Handbook — AI creations: https://www.etsy.com/seller-handbook/article/1275449912004
-- Etsy Help — What Can I Sell: https://help.etsy.com/hc/en-us/articles/360024112614
-- Trend/context (third-party; verify): https://www.shopfoundry.app/trends/etsy-wall-art
-- Trend/context (third-party; verify): https://www.insightagent.app/guides/best-selling-printable-wall-art-etsy
-- Pricing/patterns (third-party; verify): https://anlyzo.com/blog/sell-wall-art-prints-on-etsy
-- Ratio guidance (third-party): https://ratioready.com/guides/best-wall-art-sizes-for-etsy
+- Etsy Seller Handbook — AI creations: [https://www.etsy.com/seller-handbook/article/1275449912004](https://www.etsy.com/seller-handbook/article/1275449912004)
+- Etsy Help — What Can I Sell: [https://help.etsy.com/hc/en-us/articles/360024112614](https://help.etsy.com/hc/en-us/articles/360024112614)
+- Trend/context (third-party; verify): [https://www.shopfoundry.app/trends/etsy-wall-art](https://www.shopfoundry.app/trends/etsy-wall-art)
+- Trend/context (third-party; verify): [https://www.insightagent.app/guides/best-selling-printable-wall-art-etsy](https://www.insightagent.app/guides/best-selling-printable-wall-art-etsy)
+- Pricing/patterns (third-party; verify): [https://anlyzo.com/blog/sell-wall-art-prints-on-etsy](https://anlyzo.com/blog/sell-wall-art-prints-on-etsy)
+- Ratio guidance (third-party): [https://ratioready.com/guides/best-wall-art-sizes-for-etsy](https://ratioready.com/guides/best-wall-art-sizes-for-etsy)
 
 ---
 
@@ -475,3 +489,4 @@ When re-running this brief:
 2. Replace blog price/search claims with observed listing samples.
 3. Confirm AI disclosure wording and listing attributes in current Shop Manager UI.
 4. Append results to this file under `## Research outcome — YYYY-MM-DD`.
+
