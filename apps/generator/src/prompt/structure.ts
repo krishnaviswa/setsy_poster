@@ -1,4 +1,4 @@
-import type { Config } from "./generate-posters";
+import type { Config } from "../config/types";
 
 export interface StructuredPromptResult {
   config: Config;
@@ -143,7 +143,6 @@ function inferSubjects(text: string, count: number): string[] {
       .filter((s) => s.length > 0);
   }
 
-  // Explicit "Subjects:" style lists without label — lines starting with "- "
   const bullets = text
     .split(/\n/)
     .map((l) => l.trim())
@@ -152,15 +151,12 @@ function inferSubjects(text: string, count: number): string[] {
     .filter((s) => s.length > 0);
   if (bullets.length) return bullets;
 
-  // Single creative subject from the brief — do not invent extras
   const single = ["the main subject described in the creative brief"];
   if (count <= 1) return single;
-
-  // Multiple slots but no listed subjects: reuse the same subject (no invention)
   return single;
 }
 
-function toStructuredText(config: Config, creativeBrief: string): string {
+export function toStructuredText(config: Config, creativeBrief: string): string {
   return [
     `Generate ${config.count} vertical poster images for ${config.theme}.`,
     `Style: ${config.style}.`,

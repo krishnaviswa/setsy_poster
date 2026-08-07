@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "refsPerNiche": 5,
+  "niches": [
+    {
+      "slug": "nursery-storybook-animals",
+      "label": "Soft storybook nursery animal printable sets",
+      "style": "soft vintage storybook watercolor illustration",
+      "audience": "Parents, nurseries, baby-shower gifts",
+      "etsySearchPhrase": "nursery animal digital art",
+      "buyerIntent": "Nursery décor, gift",
+      "riskNotes": "No copyrighted characters; invent original animals",
+      "defaultSubjects": [
+        "friendly fox portrait on cream ground",
+        "friendly bear portrait on cream ground",
+        "friendly deer portrait on cream ground"
+      ],
+      "suggestedColors": "cream, muted sage, rust, warm brown"
+    },
+    {
+      "slug": "warm-botanical-gallery",
+      "label": "Warm-neutral botanical gallery wall printables",
+      "style": "soft watercolor botanical, quiet luxury",
+      "audience": "Living room, bedroom décor",
+      "etsySearchPhrase": "botanical gallery wall printable",
+      "buyerIntent": "Décor, gift",
+      "riskNotes": "Plant species names OK; avoid branded botanicals",
+      "defaultSubjects": [
+        "warm botanical stem study",
+        "quiet leafy botanical arrangement",
+        "soft floral botanical study"
+      ],
+      "suggestedColors": "warm cream, sage, soft terracotta, muted olive"
+    },
+    {
+      "slug": "japandi-scandi-calm",
+      "label": "Japandi / calm Scandinavian printable sets",
+      "style": "soft linen texture, muted Japandi calm composition",
+      "audience": "Living rooms, calm modern homes",
+      "etsySearchPhrase": "japandi printable wall art",
+      "buyerIntent": "Décor",
+      "riskNotes": "Low IP risk if original; keep quiet compositions",
+      "defaultSubjects": [
+        "minimal ceramic vessel still life",
+        "quiet branch silhouette on linen ground",
+        "soft abstract calm shape field"
+      ],
+      "suggestedColors": "linen, warm gray, soft charcoal, muted clay"
+    }
+  ]
+}

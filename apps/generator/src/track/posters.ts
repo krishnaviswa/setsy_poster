@@ -1,14 +1,16 @@
 import fs from "fs";
 import path from "path";
-import type { GenerationResult } from "./generate-posters";
+import type { GenerationResult } from "../generate/types";
+import { repoPath } from "../paths";
 
-const TRACKING_PATH = path.join(process.cwd(), "docs", "POSTERS.md");
+const TRACKING_PATH = (): string => repoPath("docs", "POSTERS.md");
 
 export function ensurePosterLog(): void {
-  fs.mkdirSync(path.dirname(TRACKING_PATH), { recursive: true });
-  if (!fs.existsSync(TRACKING_PATH)) {
+  const tracking = TRACKING_PATH();
+  fs.mkdirSync(path.dirname(tracking), { recursive: true });
+  if (!fs.existsSync(tracking)) {
     fs.writeFileSync(
-      TRACKING_PATH,
+      tracking,
       [
         "# Poster log",
         "",
@@ -40,11 +42,11 @@ export function appendPosterLog(entry: {
       ? entry.errors.join("; ").replace(/\|/g, "/")
       : "—";
   const row = `| \`${entry.runId}\` | ${date} | \`${entry.promptFile}\` | ${outputs} | ${entry.count} | ${entry.files.length} | ${err} |`;
-  fs.appendFileSync(TRACKING_PATH, `${row}\n`, "utf8");
+  fs.appendFileSync(TRACKING_PATH(), `${row}\n`, "utf8");
 }
 
 export function trackingPath(): string {
-  return TRACKING_PATH;
+  return TRACKING_PATH();
 }
 
 export type { GenerationResult };

@@ -1,0 +1,26 @@
+{
+  "name": "@etsy-posters/generator",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Print-ready poster generator via Replicate flux-kontext-pro",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "ts-node src/cli.ts",
+    "ui": "ts-node src/server.ts",
+    "build": "tsc",
+    "start": "node dist/cli.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "replicate": "^1.0.1",
+    "sharp": "^0.33.5"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3"
+  }
+}

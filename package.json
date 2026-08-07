@@ -1,25 +1,24 @@
 {
   "name": "etsy-posters",
   "version": "1.0.0",
-  "description": "Generate print-ready nursery poster images from a single config paragraph using Replicate flux-kontext-pro.",
+  "description": "Monorepo: TypeScript poster generator + Python Etsy research pipeline.",
   "private": true,
+  "workspaces": [
+    "apps/generator"
+  ],
   "scripts": {
-    "dev": "ts-node src/generate-posters.ts",
-    "ui": "ts-node src/server.ts",
-    "build": "tsc",
-    "start": "node dist/generate-posters.js"
+    "dev": "npm run dev -w @etsy-posters/generator",
+    "ui": "npm run ui -w @etsy-posters/generator",
+    "build": "npm run build -w @etsy-posters/generator",
+    "start": "npm run start -w @etsy-posters/generator",
+    "research": "node scripts/research.cjs",
+    "research:collect": "node scripts/research.cjs collect",
+    "research:analyze": "node scripts/research.cjs analyze",
+    "research:prompt": "node scripts/research.cjs prompt",
+    "research:generate": "node scripts/research.cjs generate",
+    "research:all": "node scripts/research.cjs run-all"
   },
   "engines": {
     "node": ">=18"
-  },
-  "dependencies": {
-    "dotenv": "^16.4.7",
-    "replicate": "^1.0.1",
-    "sharp": "^0.33.5"
-  },
-  "devDependencies": {
-    "@types/node": "^22.10.5",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.7.3"
   }
 }

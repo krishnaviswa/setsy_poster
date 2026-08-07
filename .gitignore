@@ -1,9 +1,23 @@
 node_modules/
 dist/
 .env
-output/
 .tools/
 *.log
 .DS_Store
 .cursor/
 .vscode/
+
+# Runtime artifacts (keep .gitkeep)
+data/output/*
+!data/output/.gitkeep
+data/research/refs/**
+!data/research/refs/.gitkeep
+!data/research/refs/**/.gitkeep
+python/.venv/
+apps/research/.venv/
+**/__pycache__/
+*.pyc
+.pytest_cache/
+
+# Legacy paths (if present)
+output/

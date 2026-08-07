@@ -1,0 +1,3 @@
+This folder moved to `data/config/`. Use:
+
+  npm run dev -- --file "data/config/prompt.txt"

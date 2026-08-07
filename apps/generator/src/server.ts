@@ -1,11 +1,15 @@
 import http from "http";
 import fs from "fs";
 import path from "path";
-import { runWorkflow } from "./workflow";
+import dotenv from "dotenv";
+import { runWorkflow } from "./workflow/run";
+import { findRepoRoot, repoPath } from "./paths";
+
+dotenv.config({ path: path.join(findRepoRoot(), ".env") });
 
 const PORT = 8787;
-const PUBLIC_DIR = path.join(process.cwd(), "public");
-const OUTPUT_DIR = path.join(process.cwd(), "output");
+const PUBLIC_DIR = path.join(__dirname, "..", "public");
+const OUTPUT_DIR = (): string => repoPath("data", "output");
 
 function readBody(req: http.IncomingMessage): Promise<string> {
   return new Promise((resolve, reject) => {
@@ -70,7 +74,7 @@ const server = http.createServer(async (req, res) => {
         res.end("Invalid filename");
         return;
       }
-      serveFile(res, path.join(OUTPUT_DIR, name), "image/png");
+      serveFile(res, path.join(OUTPUT_DIR(), name), "image/png");
       return;
     }
 
@@ -89,7 +93,6 @@ const server = http.createServer(async (req, res) => {
         return;
       }
 
-      // NLP → structure → save prompts/ → API → track docs/POSTERS.md
       const result = await runWorkflow(prompt);
       sendJson(res, 200, result);
       return;

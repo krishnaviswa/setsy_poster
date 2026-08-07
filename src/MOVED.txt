@@ -1,0 +1,1 @@
+Source code moved to `apps/generator/src/`. Run `npm run ui` / `npm run dev` from the repo root.

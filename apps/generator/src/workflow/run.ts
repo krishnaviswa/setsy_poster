@@ -1,21 +1,17 @@
 import fs from "fs";
 import path from "path";
-import {
-  buildPrompt,
-  generateImage,
-  saveAsPrintReady,
-  type Config,
-  type GenerationResult,
-} from "./generate-posters";
+import type { Config } from "../config/types";
+import { getImageModel, getMaxImages } from "../config/load-models";
+import { buildPrompt } from "../prompt/build";
 import {
   structureFromNlp,
   uniquePromptBasename,
-} from "./structure-prompt";
-import { appendPosterLog, trackingPath } from "./track-posters";
-
-const MODEL = "black-forest-labs/flux-kontext-pro";
-const MAX_IMAGES = 4;
-const PROMPTS_DIR = path.join(process.cwd(), "prompts");
+} from "../prompt/structure";
+import { generateImage } from "../generate/replicate";
+import { saveAsPrintReady } from "../generate/print";
+import type { GenerationResult } from "../generate/types";
+import { appendPosterLog, trackingPath } from "../track/posters";
+import { findRepoRoot, repoPath } from "../paths";
 
 export interface WorkflowResult extends GenerationResult {
   runId: string;
@@ -26,39 +22,41 @@ export interface WorkflowResult extends GenerationResult {
 }
 
 function capCount(config: Config): void {
-  if (config.count > MAX_IMAGES) {
+  const maxImages = getMaxImages();
+  if (config.count > maxImages) {
     console.warn(
-      `Warning: requested ${config.count} images; hard cap is ${MAX_IMAGES}. Generating ${MAX_IMAGES}.`
+      `Warning: requested ${config.count} images; hard cap is ${maxImages}. Generating ${maxImages}.`
     );
-    config.count = MAX_IMAGES;
+    config.count = maxImages;
   }
 }
 
 function saveStructuredPrompt(runId: string, structuredText: string): string {
-  fs.mkdirSync(PROMPTS_DIR, { recursive: true });
-  const relative = path.join("prompts", `${runId}.txt`);
-  const absolute = path.join(process.cwd(), relative);
+  const promptsDir = repoPath("data", "prompts");
+  fs.mkdirSync(promptsDir, { recursive: true });
+  const absolute = path.join(promptsDir, `${runId}.txt`);
   fs.writeFileSync(absolute, structuredText, "utf8");
-  return relative.replace(/\\/g, "/");
+  return path
+    .relative(findRepoRoot(), absolute)
+    .replace(/\\/g, "/");
 }
 
 /**
  * Full workflow:
  * 1) Accept NLP
  * 2) Build structured prompt
- * 3) Save to prompts/ with unique name
+ * 3) Save to data/prompts/ with unique name
  * 4) Call Replicate API (one call per slot)
- * 5) Save print-ready PNGs
+ * 5) Save print-ready PNGs to data/output/
  * 6) Append run to docs/POSTERS.md
  */
 export async function runWorkflow(nlpText: string): Promise<WorkflowResult> {
   const steps: string[] = [];
+  const model = getImageModel();
 
-  // Step 1 — receive NLP
   steps.push("1. Received natural-language prompt");
   console.log("[workflow] Step 1: received NLP prompt");
 
-  // Step 2 — structure
   const structured = structureFromNlp(nlpText);
   const config = structured.config;
   capCount(config);
@@ -69,17 +67,15 @@ export async function runWorkflow(nlpText: string): Promise<WorkflowResult> {
     `[workflow] Step 2: structured (${structured.source}) count=${config.count} theme="${config.theme}"`
   );
 
-  // Step 3 — save unique prompt file
   const runId = uniquePromptBasename(config.theme);
   const promptFile = saveStructuredPrompt(runId, structured.structuredText);
   steps.push(`3. Saved structured prompt to ${promptFile}`);
   console.log(`[workflow] Step 3: saved ${promptFile}`);
 
-  // Steps 4–5 — API + save images
   steps.push("4. Calling Replicate API for each image slot");
-  steps.push("5. Saving print-ready PNGs to output/");
+  steps.push("5. Saving print-ready PNGs to data/output/");
   console.log(
-    `[workflow] Steps 4–5: generating via ${MODEL} (${config.count} slot(s))`
+    `[workflow] Steps 4–5: generating via ${model} (${config.count} slot(s))`
   );
 
   const files: string[] = [];
@@ -107,7 +103,7 @@ export async function runWorkflow(nlpText: string): Promise<WorkflowResult> {
         config.dpi
       );
       files.push(filename);
-      console.log(`Generated ${filename} using ${MODEL}`);
+      console.log(`Generated ${filename} using ${model}`);
     } catch (err) {
       const message = err instanceof Error ? err.message : String(err);
       errors.push(`${filename}: ${message}`);
@@ -116,7 +112,6 @@ export async function runWorkflow(nlpText: string): Promise<WorkflowResult> {
     }
   }
 
-  // Step 6 — tracking MD
   appendPosterLog({
     runId,
     promptFile,
@@ -125,7 +120,7 @@ export async function runWorkflow(nlpText: string): Promise<WorkflowResult> {
     errors,
   });
   const trackingFile = path
-    .relative(process.cwd(), trackingPath())
+    .relative(findRepoRoot(), trackingPath())
     .replace(/\\/g, "/");
   steps.push(`6. Appended run to ${trackingFile}`);
   console.log(`[workflow] Step 6: updated ${trackingFile}`);

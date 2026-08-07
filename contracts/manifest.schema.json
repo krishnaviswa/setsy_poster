@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://etsy-posters.local/contracts/manifest.schema.json",
+  "title": "NicheManifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["nicheSlug", "searchPhrase", "fetchedAt", "items"],
+  "properties": {
+    "nicheSlug": { "type": "string" },
+    "searchPhrase": { "type": "string" },
+    "fetchedAt": { "type": "string", "format": "date-time" },
+    "items": {
+      "type": "array",
+      "maxItems": 5,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["index", "title", "listingUrl", "imageUrl", "localPath"],
+        "properties": {
+          "index": { "type": "integer", "minimum": 1 },
+          "title": { "type": "string" },
+          "listingUrl": { "type": "string" },
+          "imageUrl": { "type": "string" },
+          "localPath": { "type": "string" }
+        }
+      }
+    }
+  }
+}

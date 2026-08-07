@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://etsy-posters.local/contracts/style-features.schema.json",
+  "title": "StyleFeaturesRollup",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["nicheSlug", "analyzedAt", "perImage", "rollup"],
+  "properties": {
+    "nicheSlug": { "type": "string" },
+    "analyzedAt": { "type": "string", "format": "date-time" },
+    "perImage": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "localPath",
+          "medium",
+          "palette",
+          "lighting",
+          "composition",
+          "subjectType",
+          "texture",
+          "typographyPresent",
+          "roomUseGuess"
+        ],
+        "properties": {
+          "localPath": { "type": "string" },
+          "medium": { "type": "string" },
+          "palette": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 5,
+            "items": { "type": "string" }
+          },
+          "lighting": { "type": "string" },
+          "composition": { "type": "string" },
+          "subjectType": { "type": "string" },
+          "texture": { "type": "string" },
+          "typographyPresent": { "type": "boolean" },
+          "roomUseGuess": { "type": "string" }
+        }
+      }
+    },
+    "rollup": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "medium",
+        "palette",
+        "lighting",
+        "composition",
+        "subjectType",
+        "texture",
+        "typographyPresent",
+        "roomUseGuess"
+      ],
+      "properties": {
+        "medium": { "type": "string" },
+        "palette": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "lighting": { "type": "string" },
+        "composition": { "type": "string" },
+        "subjectType": { "type": "string" },
+        "texture": { "type": "string" },
+        "typographyPresent": { "type": "boolean" },
+        "roomUseGuess": { "type": "string" }
+      }
+    }
+  }
+}
