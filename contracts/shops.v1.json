@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "defaultLimit": 12,
+  "shops": [
+    {
+      "slug": "edl-printable-designs",
+      "name": "EdLPrintableDesigns",
+      "shopUrl": "https://www.etsy.com/in-en/shop/EdLPrintableDesigns",
+      "notes": "Long-running digital printable shop used as a market-pattern study (inspiration only).",
+      "limit": 12,
+      "signals": [
+        "Badge / trust: ~**28.5k sales**, **5.0** from ~**2.8k reviews**, **~3 years** on Etsy.",
+        "Catalog size shown as **~1111 items**; sidebar sections emphasize **clipart** and **digital paper**.",
+        "Example sections: Watercolor / Animal / Floral / People / Landscape / Cute / Food / Dress / Christmas / Halloween clipart.",
+        "Storefront presentation: strong brand banner, all visible cards marked **Digital Download**, frequent **sale %** badges.",
+        "Product type skew: primarily **PNG/JPG clipart + seamless digital paper**, not framed wall-poster printables."
+      ],
+      "hypotheses": [
+        "**High SKU volume** of related digital assets (clipart packs + seamless papers).",
+        "**Clear digital-download labeling** on every card.",
+        "**Seasonal + evergreen mix** across clipart categories.",
+        "Recognizable watercolor / cute illustration system.",
+        "For *our* poster generator: borrow theme clusters only — do not copy assets."
+      ]
+    },
+    {
+      "slug": "tap-into-digital",
+      "name": "TapIntoDigital",
+      "shopUrl": "https://www.etsy.com/shop/TapIntoDigital",
+      "notes": "Custom Pixar/3D-style portrait gifts from photos (couple/family/pet). Deep-sample research only; inspiration, not copying.",
+      "limit": 48,
+      "signals": [
+        "Badge / trust: about **17.2k sales** shown on the storefront (reviews not reliably parsed).",
+        "Product mix on the sampled page is **broader than Pixar portraits alone**: custom pet bathroom portraits, Pixar/3D photo portraits, plus a large recent wave of **PNG sublimation** designs (Halloween, Christmas, breast-cancer awareness, funny quotes).",
+        "Hero / featured SKUs still include **Pixar Style Portrait from Photo** (couple / family / pet gift) and funny **custom pet toilet** wall-art downloads.",
+        "Nearly all cards are labeled **Digital Download**.",
+        "Headless Playwright often returns **0** cards for this shop; sample was captured via interactive browser then ingested with `--from-json`."
+      ],
+      "hypotheses": [
+        "**Gift customization hook**: photo-to-Pixar / pet portrait language drives gift intent (couple, family, pet).",
+        "**Funny pet bathroom art** is a distinct viral-style niche sitting beside the portrait offer.",
+        "**High SKU velocity via PNG sublimation** (seasonal + awareness + humor) likely pads catalog volume beyond custom portraits.",
+        "For *our* poster generator: original concepts can target **animated-style family/pet gift posters** and **funny pet wall art** — do **not** copy their art, titles, or offer a fake “Disney/Pixar” trademark claim.",
+        "Avoid trademarked “Pixar” / Disney branding in sellable titles; use “3D animated cartoon portrait style” wording instead."
+      ]
+    }
+  ]
+}

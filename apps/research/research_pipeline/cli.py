@@ -18,6 +18,27 @@ def main(argv: list[str] | None = None) -> int:
         help="Fallback image/listing URLs instead of crawling (first niche only)",
     )
 
+    shop_p = sub.add_parser(
+        "collect-shop",
+        help="Crawl a specific Etsy shop (default: EdLPrintableDesigns from contracts/shops.v1.json)",
+    )
+    shop_p.add_argument(
+        "--shop",
+        default="edl-printable-designs",
+        help="Shop slug from contracts/shops.v1.json, shop name, or full shop URL",
+    )
+    shop_p.add_argument(
+        "--limit",
+        type=int,
+        default=None,
+        help="Max listing thumbs to save (default from shops.v1.json)",
+    )
+    shop_p.add_argument(
+        "--from-json",
+        default=None,
+        help="Skip live scrape; load listings array JSON [{title,listingUrl,imageUrl}]",
+    )
+
     analyze_p = sub.add_parser("analyze", help="Vision/heuristic style analysis of local refs")
     analyze_p.add_argument(
         "--no-vision",
@@ -50,6 +71,12 @@ def main(argv: list[str] | None = None) -> int:
         from .crawl.etsy import collect_all_sync
 
         collect_all_sync(from_urls=args.from_urls)
+        return 0
+
+    if args.command == "collect-shop":
+        from .crawl.shop import collect_shop_sync
+
+        collect_shop_sync(args.shop, limit=args.limit, from_json=args.from_json)
         return 0
 
     if args.command == "analyze":

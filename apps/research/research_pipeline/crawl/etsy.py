@@ -1,45 +1,20 @@
 from __future__ import annotations
-
 import asyncio
 import json
-import re
 import time
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import List, Optional
 from urllib.parse import quote_plus, urljoin
-
 import httpx
-
 from ..models import ManifestItem, Niche, NicheManifest
 from ..niches import load_niches, refs_per_niche
 from ..paths import repo_path
-
-PHYSICAL_HINTS = re.compile(
-    r"\b(framed|shipped|shipping|canvas|print on demand|pod|physical|metal print)\b",
-    re.I,
-)
+from .common import download, looks_digital
 
 
 def _etsy_search_url(phrase: str) -> str:
-    return (
-        "https://www.etsy.com/search?q="
-        + quote_plus(phrase)
-        + "&explicit=1"
-    )
-
-
-def _looks_digital(title: str) -> bool:
-    if PHYSICAL_HINTS.search(title or ""):
-        return False
-    return True
-
-
-async def _download(client: httpx.AsyncClient, url: str, dest: Path) -> None:
-    dest.parent.mkdir(parents=True, exist_ok=True)
-    resp = await client.get(url, follow_redirects=True, timeout=60.0)
-    resp.raise_for_status()
-    dest.write_bytes(resp.content)
+    return "https://www.etsy.com/search?q=" + quote_plus(phrase) + "&explicit=1"
 
 
 async def _crawl_with_playwright(niche: Niche, limit: int) -> List[dict]:
@@ -47,7 +22,6 @@ async def _crawl_with_playwright(niche: Niche, limit: int) -> List[dict]:
 
     results: List[dict] = []
     url = _etsy_search_url(niche.etsySearchPhrase)
-
     async with async_playwright() as p:
         browser = await p.chromium.launch(headless=True)
         context = await browser.new_context(
@@ -61,7 +35,6 @@ async def _crawl_with_playwright(niche: Niche, limit: int) -> List[dict]:
         page = await context.new_page()
         await page.goto(url, wait_until="domcontentloaded", timeout=60000)
         await page.wait_for_timeout(2500)
-
         cards = await page.query_selector_all(
             "a[href*='/listing/'], [data-listing-id] a[href*='/listing/']"
         )
@@ -77,12 +50,12 @@ async def _crawl_with_playwright(niche: Niche, limit: int) -> List[dict]:
                 listing_url = urljoin("https://www.etsy.com", listing_url)
             if listing_url in seen:
                 continue
-
-            title = (await card.get_attribute("title")) or (await card.inner_text()) or ""
+            title = (
+                (await card.get_attribute("title")) or (await card.inner_text()) or ""
+            )
             title = " ".join(title.split())
-            if not _looks_digital(title):
+            if not looks_digital(title):
                 continue
-
             img = await card.query_selector("img")
             image_url = ""
             if img:
@@ -93,7 +66,6 @@ async def _crawl_with_playwright(niche: Niche, limit: int) -> List[dict]:
                 )
             if not image_url:
                 continue
-
             seen.add(listing_url)
             results.append(
                 {
@@ -102,9 +74,7 @@ async def _crawl_with_playwright(niche: Niche, limit: int) -> List[dict]:
                     "imageUrl": image_url,
                 }
             )
-
         await browser.close()
-
     return results
 
 
@@ -132,7 +102,6 @@ async def collect_niche(
     refs_dir.mkdir(parents=True, exist_ok=True)
     manifests_dir = repo_path("data", "research", "manifests")
     manifests_dir.mkdir(parents=True, exist_ok=True)
-
     if from_urls:
         raw_items = _crawl_from_urls(from_urls[:limit], niche)
     else:
@@ -140,20 +109,19 @@ async def collect_niche(
             raw_items = await _crawl_with_playwright(niche, limit)
         except Exception as exc:  # noqa: BLE001
             print(f"[crawl] Playwright failed for {niche.slug}: {exc}")
-            print("[crawl] Tip: pass --from-urls or install browsers: playwright install chromium")
+            print(
+                "[crawl] Tip: pass --from-urls or install browsers: playwright install chromium"
+            )
             raw_items = []
-
     items: List[ManifestItem] = []
     async with httpx.AsyncClient(
         headers={"User-Agent": "etsy-posters-research/1.0"},
         follow_redirects=True,
     ) as client:
         for i, raw in enumerate(raw_items[:limit], start=1):
-            ext = ".jpg"
-            local_name = f"{i:02d}{ext}"
-            local_path = refs_dir / local_name
+            local_path = refs_dir / f"{i:02d}.jpg"
             try:
-                await _download(client, raw["imageUrl"], local_path)
+                await download(client, raw["imageUrl"], local_path)
             except Exception as exc:  # noqa: BLE001
                 print(f"[crawl] download failed ({raw['imageUrl']}): {exc}")
                 continue
@@ -168,7 +136,6 @@ async def collect_niche(
                 )
             )
             time.sleep(0.4)
-
     manifest = NicheManifest(
         nicheSlug=niche.slug,
         searchPhrase=niche.etsySearchPhrase,
@@ -180,7 +147,7 @@ async def collect_niche(
         json.dumps(manifest.model_dump(), indent=2),
         encoding="utf-8",
     )
-    print(f"[crawl] {niche.slug}: saved {len(items)} refs → {out_path}")
+    print(f"[crawl] {niche.slug}: saved {len(items)} refs -> {out_path}")
     return manifest
 
 
@@ -188,7 +155,6 @@ async def collect_all(from_urls: Optional[List[str]] = None) -> List[NicheManife
     niches = load_niches()
     manifests: List[NicheManifest] = []
     for niche in niches:
-        # from_urls only applies as a shared fallback for the first niche if provided
         urls = from_urls if from_urls and niche is niches[0] else None
         manifests.append(await collect_niche(niche, from_urls=urls))
         await asyncio.sleep(2.0)

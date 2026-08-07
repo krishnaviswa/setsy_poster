@@ -13,6 +13,7 @@
     "start": "npm run start -w @etsy-posters/generator",
     "research": "node scripts/research.cjs",
     "research:collect": "node scripts/research.cjs collect",
+    "research:collect-shop": "node scripts/research.cjs collect-shop",
     "research:analyze": "node scripts/research.cjs analyze",
     "research:prompt": "node scripts/research.cjs prompt",
     "research:generate": "node scripts/research.cjs generate",
@@ -20,5 +21,8 @@
   },
   "engines": {
     "node": ">=18"
+  },
+  "devDependencies": {
+    "playwright": "^1.62.1"
   }
 }
