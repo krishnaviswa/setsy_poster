@@ -20,7 +20,7 @@ Cross-language boundary: **`contracts/`**. Field names for `PosterConfig` must m
 
 Image generation (TypeScript only):
 
-- `black-forest-labs/flux-kontext-pro` (from `contracts/MODELS.json` → `imageModel`)
+- `black-forest-labs/flux-schnell` (from `contracts/MODELS.json` → `imageModel`)
 
 Vision analysis (Python research):
 

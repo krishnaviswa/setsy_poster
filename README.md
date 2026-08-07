@@ -1,6 +1,6 @@
 # Etsy Posters
 
-Monorepo that turns a natural-language idea into print-ready poster PNGs via Replicate (`flux-kontext-pro`), plus a Python research pipeline that studies Etsy niche patterns and emits compatible prompts.
+Monorepo that turns a natural-language idea into print-ready poster PNGs via Replicate (`flux-schnell`), plus a Python research pipeline that studies Etsy niche patterns and emits compatible prompts.
 
 ## Layout
 

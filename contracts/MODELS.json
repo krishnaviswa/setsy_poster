@@ -1,5 +1,5 @@
 {
-  "imageModel": "black-forest-labs/flux-kontext-pro",
+  "imageModel": "black-forest-labs/flux-schnell",
   "visionModel": "yorickvp/llava-13b",
   "maxImages": 4,
   "defaultWidthInches": 18,
