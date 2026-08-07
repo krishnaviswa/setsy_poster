@@ -24,7 +24,7 @@ Pass another file with `--file` (path relative to repo root):
 
 ```bash
 npm run dev -- --file "data/config/Ganesha.txt"
-npm run dev -- --file "data/prompts/research-nursery-storybook-animals-….txt"
+npm run dev -- --file "data/prompts/research-nursery-storybook-animals.txt"
 ```
 
 The same NLP → structure → save → generate → track workflow runs.
